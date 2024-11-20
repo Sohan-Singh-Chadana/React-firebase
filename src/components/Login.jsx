@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { app } from "../Firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -77,6 +78,17 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
+  const loginWithGithub = () => {
+    const auth = getAuth(app);
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        navigate("/dashboard");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Container>
       <SignUpContainer>
@@ -111,45 +123,68 @@ const Login = () => {
               Don't have an account? <Link to="/signup">Sign up</Link>
             </p>
           </div>
-          <button
-            type="button"
-            onClick={loginWithGoogle}
+          <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "10px",
-              justifyContent: "center",
-              margin: "20px auto 0px",
-              padding: "5px 5px",
+              flexDirection: "column",
+              gap: "12px",
+              marginTop: "20px",
             }}
           >
-            Login with Google{" "}
-            <img
-              src="https://w7.pngwing.com/pngs/882/225/png-transparent-google-logo-google-logo-google-search-icon-google-text-logo-business-thumbnail.png"
-              alt="Google Icon"
-              width={30}
-              height={30}
-            />
-          </button>
-          <button
-            type="button"
-            onClick={loginWithFacebook}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              justifyContent: "center",
-              margin: "20px auto 0px",
-              padding: "0px 2px",
-            }}
-          >
-            Login with Facebook
-            <img
-              src="https://static.vecteezy.com/system/resources/thumbnails/018/930/698/small/facebook-logo-facebook-icon-transparent-free-png.png"
-              width={40}
-              height={40}
-            />
-          </button>
+            <button
+              type="button"
+              onClick={loginWithGoogle}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: "center",
+              }}
+            >
+              Login with Google{" "}
+              <img
+                src="https://w7.pngwing.com/pngs/882/225/png-transparent-google-logo-google-logo-google-search-icon-google-text-logo-business-thumbnail.png"
+                alt="Google Icon"
+                width={30}
+                height={30}
+              />
+            </button>
+            <button
+              type="button"
+              onClick={loginWithGithub}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: "center",
+              }}
+            >
+              Login with Github
+              <img
+                src="https://banner2.cleanpng.com/20190523/juu/kisspng-github-software-repository-computer-icons-email-5ce6e863973725.5475298415586366436194.jpg"
+                width={40}
+                height={40}
+              />
+            </button>
+            <button
+              type="button"
+              onClick={loginWithFacebook}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: "center",
+              }}
+            >
+              Login with FaceBook
+              <img
+                src="https://icon2.cleanpng.com/20190402/iob/kisspng-portable-network-graphics-computer-icons-jpeg-imag-1713899405879.webp"
+                width={40}
+                height={40}
+              />
+            </button>
+          </div>
         </form>
       </SignUpContainer>
     </Container>
