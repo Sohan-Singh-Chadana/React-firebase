@@ -6,10 +6,11 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { app } from "../Firebase";
+import { app } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
-import NotificationContext from "../context/NotificationToastContext";
+import NotificationContext from "../../context/NotificationToastContext";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import Heading from "../Heading/Heading";
 
 const AddFaculty = () => {
   const [name, setName] = React.useState("");
@@ -99,7 +100,7 @@ const AddFaculty = () => {
 
   return (
     <>
-      <h2>Add Faculty</h2>
+      <Heading>Add Faculty</Heading>
       <form onSubmit={submitHandler}>
         <input
           onChange={(e) => setName(e.target.value)}

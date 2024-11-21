@@ -1,6 +1,6 @@
 import { getDatabase, ref, remove } from "firebase/database";
 import { getStorage, ref as storageRef, deleteObject } from "firebase/storage";
-import { app } from "../Firebase.js";
+import { app } from "../../Firebase";
 
 export const deleteData = (id) => {
   // Get the database and storage references

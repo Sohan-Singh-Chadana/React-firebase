@@ -1,16 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./components/Dashboard.jsx";
-import AddStudent from "./components/AddStudent.jsx";
-import StudentList from "./components/StudentList.jsx";
+import SignUp from "./pages/SignUp/SignUp";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import StudentList from "./pages/StudentList/StudentList";
+import AddStudent from "./components/AddStudent/AddStudent";
+import AddFaculty from "./components/AddFaculty/AddFaculty";
+import FacultyList from "./pages/FacultyList/FacultyList";
+import UpdateStudent from "./components/UpdateStudent/UpdateStudent.jsx";
+import UpdateFaculty from "./components/UpdateFaculty/UpdateFaculty.jsx";
 import "./index.css";
-import UpdateStudent from "./components/UpdateStudent.jsx";
-import AddFaculty from "./components/AddFaculty.jsx";
-import FacultyList from "./components/FacultyList.jsx";
-import UpdateFaculty from "./components/UpdateFaculty.jsx";
-import SignUp from "./components/SignUp.jsx";
-import Login from "./components/Login.jsx";
 
 const router = createBrowserRouter(
   [

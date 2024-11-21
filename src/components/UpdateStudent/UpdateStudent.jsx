@@ -6,9 +6,9 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { app } from "../Firebase.js";
+import { app } from "../../Firebase.js";
 import { useLocation, useNavigate } from "react-router-dom";
-import NotificationContext from "../context/NotificationToastContext.jsx";
+import NotificationContext from "../../context/NotificationToastContext.jsx";
 
 const UpdateStudent = () => {
   const navigate = useNavigate();

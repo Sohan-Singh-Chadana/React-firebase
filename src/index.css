@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inder", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,9 +22,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-body {
-  margin: 0;
 }
 
 a {
@@ -39,7 +45,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #242c40;
+  /* background-color: #1a1a1a; */
   /* background-color: #e8e8e8;
   color: #1a1a1a; */
   cursor: pointer;
@@ -60,7 +67,8 @@ input {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #242c40;
+  /* background-color: #1a1a1a; */
   /* background-color: #e8e8e8;
   color: #1a1a1a; */
   transition: border-color 0.25s;
@@ -79,10 +87,10 @@ td {
   text-align: center;
 }
 tr:hover {
-  background-color: steelblue;
+  background-color: #242c40;
 }
 .taHead:hover {
-  background-color: lightseagreen;
+  background-color: #242c40;
 }
 .material-symbols-rounded {
   cursor: pointer;
@@ -91,11 +99,6 @@ tr:hover {
 form {
   margin: 0px auto;
   width: 90%;
-}
-.active {
-  background-color: lightseagreen;
-  color: #1a1a1a !important;
-  border-radius: 12px;
 }
 
 @media (prefers-color-scheme: light) {

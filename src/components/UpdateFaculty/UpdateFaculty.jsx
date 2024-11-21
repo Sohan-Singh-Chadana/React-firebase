@@ -1,8 +1,8 @@
 import React from "react";
 import { getFirestore, doc, updateDoc, getDoc } from "firebase/firestore";
-import { app } from "../Firebase";
+import { app } from "../../Firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import NotificationContext from "../context/NotificationToastContext";
+import NotificationContext from "../../context/NotificationToastContext";
 import {
   deleteObject,
   getDownloadURL,
@@ -10,7 +10,8 @@ import {
   ref,
   uploadBytes,
 } from "firebase/storage";
-import WarnModel from "./WarnModel";
+import WarnModel from "../SharedComponents/WarnModel";
+// import WarnModel from "./WarnModel";
 
 const UpdateFaculty = () => {
   const location = useLocation();
@@ -192,7 +193,9 @@ const UpdateFaculty = () => {
       </form>
       {/* // Modal */}
       <WarnModel showModal={showModal}>
-        <p>Are you sure remove profile picture?</p>
+        <p style={{ marginBottom: "20px" }}>
+          Are you sure remove profile picture?
+        </p>
         <button
           onClick={() => defaultImage(location.state.id)}
           style={{ marginRight: "8px" }}

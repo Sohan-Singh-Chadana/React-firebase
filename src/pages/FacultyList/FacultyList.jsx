@@ -6,19 +6,20 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { app } from "../Firebase";
-import LoadingSpinner from "./LoadingSpinner";
+import { app } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
-import NotificationContext from "../context/NotificationToastContext";
+import NotificationContext from "../../context/NotificationToastContext";
 import { deleteObject, getStorage, ref } from "firebase/storage";
-import WarnModel from "./WarnModel";
+import WarnModel from "../../components/SharedComponents/WarnModel";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import Heading from "../../components/Heading/Heading";
+import TableList from "../../components/tableList/tableList";
 
 const FacultyList = () => {
   const [faculties, setFaculties] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [showModal, setShowModal] = React.useState(false);
   const [facultyIdToDelete, setFacultyIdToDelete] = React.useState(null);
-  const navigate = useNavigate();
   const { addNotification } = React.useContext(NotificationContext);
 
   useEffect(() => {
@@ -79,63 +80,16 @@ const FacultyList = () => {
 
   return (
     <>
-      <h2>FacultyList </h2>
-      <table>
-        <tbody>
-          <tr className="taHead">
-            <th>No.</th>
-            <th>Profile Image</th>
-            <th style={{ textAlign: "left" }}>Faculty Name</th>
-            <th>Phone No.</th>
-            <th>UpdateList</th>
-            <th>RemoveList</th>
-          </tr>
-          {faculties &&
-            faculties.map(
-              ({ id, facultyName, facultyPhone, imageURL }, index) => (
-                <tr key={id}>
-                  <td>{index + 1}.</td>
-                  <td>
-                    <img
-                      src={imageURL}
-                      alt="profile"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        objectFit: "cover",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </td>
-                  <td style={{ textAlign: "left" }}>{facultyName}</td>
-                  <td>{facultyPhone}</td>
-                  <td>
-                    <span
-                      onClick={() => {
-                        navigate("/dashboard/editFaculty", {
-                          state: { id, facultyName, facultyPhone, imageURL },
-                        });
-                      }}
-                      className="material-symbols-rounded"
-                    >
-                      edit_square
-                    </span>
-                  </td>
-                  <td>
-                    <span
-                      onClick={() => confirmDelete(id)}
-                      className="material-symbols-rounded"
-                    >
-                      delete
-                    </span>
-                  </td>
-                </tr>
-              )
-            )}
-        </tbody>
-      </table>
+      <Heading>FacultyList</Heading>
+
+      {/* faculties tableList */}
+      <TableList tableList={faculties} confirmDelete={confirmDelete} />
+
+      {/* Model for delete faculty */}
       <WarnModel showModal={showModal}>
-        <p>Are you sure you want to delete this faculty?</p>
+        <p style={{ marginBottom: "20px" }}>
+          Are you sure you want to delete this faculty?
+        </p>
         <button onClick={handleDelete} style={{ marginRight: "8px" }}>
           Yes, Delete
         </button>

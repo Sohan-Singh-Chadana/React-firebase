@@ -1,5 +1,5 @@
 import { getDatabase, set, ref } from "firebase/database";
-import { app } from "../Firebase";
+import { app } from "../../Firebase";
 
 //* Only testing purpose not use for production
 const AddData = () => {

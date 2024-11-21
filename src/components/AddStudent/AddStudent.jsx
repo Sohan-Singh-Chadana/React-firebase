@@ -6,9 +6,11 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import { app } from "../Firebase.js";
+import { app } from "../../Firebase.js";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import "./AddStudent.css";
+import Heading from "../Heading/Heading.jsx";
 
 const Container = styled.div`
   display: flex;
@@ -109,7 +111,7 @@ const AddStudent = () => {
 
   return (
     <>
-      <h2>Add Student</h2>
+      <Heading>Add Student</Heading>
 
       <form onSubmit={submitHandler}>
         <input
