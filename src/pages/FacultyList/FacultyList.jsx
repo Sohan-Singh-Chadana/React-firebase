@@ -13,7 +13,7 @@ import { deleteObject, getStorage, ref } from "firebase/storage";
 import WarnModel from "../../components/SharedComponents/WarnModel";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import Heading from "../../components/Heading/Heading";
-import TableList from "../../components/tableList/tableList";
+import TableList from "./TableList.jsx";
 
 const FacultyList = () => {
   const [faculties, setFaculties] = React.useState([]);

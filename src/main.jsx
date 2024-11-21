@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import StudentList from "./pages/StudentList/StudentList";
 import AddStudent from "./components/AddStudent/AddStudent";
 import AddFaculty from "./components/AddFaculty/AddFaculty";
-import FacultyList from "./pages/FacultyList/FacultyList";
+import FacultyList from "./pages/FacultyList/FacultyList.jsx";
 import UpdateStudent from "./components/UpdateStudent/UpdateStudent.jsx";
 import UpdateFaculty from "./components/UpdateFaculty/UpdateFaculty.jsx";
 import "./index.css";
