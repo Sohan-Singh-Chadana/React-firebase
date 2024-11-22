@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
+      localStorage.setItem("isLoggedIn", JSON.stringify(user));
     });
 
     return () => unsubscribe(); // Cleanup the listener on component unmount

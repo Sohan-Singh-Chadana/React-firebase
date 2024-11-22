@@ -1,6 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -16,11 +20,19 @@ import App from "./App.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import Home from "./components/Home.jsx";
 
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <SignUp />,
+      element: isLoggedIn ? (
+        <Navigate to="/dashboard" />
+      ) : (
+        <PrivateRoute>
+          <App />
+        </PrivateRoute>
+      ),
     },
     {
       path: "/signup",
@@ -32,7 +44,6 @@ const router = createBrowserRouter(
     },
     {
       path: "/dashboard",
-      // element: <App />,
       element: (
         <PrivateRoute>
           <App />
