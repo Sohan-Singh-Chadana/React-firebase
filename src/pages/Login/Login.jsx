@@ -7,8 +7,6 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
 } from "firebase/auth";
 import { app } from "../../Firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,9 +25,17 @@ const SignUpContainer = styled.div`
   color: black;
   box-shadow: 0 0 10px rgb(175 30 237 / 69%);
   // height: 300px;
-  width: 500px;
+  width: 30%;
   padding: 20px;
   border-radius: 20px;
+
+  @media (max-width: 1194px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const LoginWithAnother = styled.button`
@@ -67,8 +73,8 @@ const Login = () => {
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then((useData) => {
-        console.log(useData);
-        console.log(useData.user);
+        // console.log(useData);
+        // console.log(useData.user);
         navigate("/dashboard");
       })
       .catch((err) => console.log(err));
@@ -83,7 +89,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate("/dashboard");
       })
       .catch((error) => console.log(error));
@@ -94,7 +100,7 @@ const Login = () => {
     const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate("/dashboard");
       })
       .catch((error) => console.log(error));
@@ -105,7 +111,7 @@ const Login = () => {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate("/dashboard");
       })
       .catch((error) => console.log(error));

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../Firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -16,10 +16,18 @@ const SignUpContainer = styled.div`
   background-color: white;
   color: black;
   box-shadow: 0 0 10px rgb(175 30 237 / 69%);
-  height: 300px;
-  width: 400px;
+  // height: 300px;
+  width: 30%;
   padding: 20px;
   border-radius: 20px;
+
+  @media (max-width: 1194px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const SignUp = () => {
@@ -38,8 +46,8 @@ const SignUp = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
-        console.log(res.user);
+        // console.log(res);
+        // console.log(res.user);
         navigate("/login");
       })
       .catch((err) => {
@@ -54,7 +62,7 @@ const SignUp = () => {
     <Container>
       <SignUpContainer>
         <h2>SignUp</h2>
-        <form onSubmit={submitHandler} style={{ margin: 0 }}>
+        <form onSubmit={submitHandler} style={{ margin: 0, width: "100%" }}>
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -72,7 +80,19 @@ const SignUp = () => {
             placeholder="Enter password"
             style={{ backgroundColor: "#ccc8c0", color: "black" }}
           />
-          <button type="submit">SignUp</button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <button type="submit">SignUp</button>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </div>
         </form>
       </SignUpContainer>
     </Container>

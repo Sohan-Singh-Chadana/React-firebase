@@ -17,7 +17,7 @@
 
 .active {
   background-color: #141b2d;
-  color: #fff !important;
+  color: #fff;
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
 }
@@ -29,7 +29,34 @@
   justify-content: center;
   gap: 16px;
   font-size: 20px;
-  padding: 10px;
+  padding: 12px;
   margin: 12px 0px;
   text-align: center;
+}
+
+.logout-btn {
+  background-color: #242c40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  gap: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+
+.logout-btn:hover {
+  background-color: #141b2d;
+}
+
+.logout-btn:active {
+  background-color: white;
+  color: black;
 }

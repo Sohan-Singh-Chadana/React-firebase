@@ -11,9 +11,17 @@ import FacultyList from "./pages/FacultyList/FacultyList.jsx";
 import UpdateStudent from "./components/UpdateStudent/UpdateStudent.jsx";
 import UpdateFaculty from "./components/UpdateFaculty/UpdateFaculty.jsx";
 import "./index.css";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import App from "./App.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import Home from "./components/Home.jsx";
 
 const router = createBrowserRouter(
   [
+    {
+      path: "/",
+      element: <SignUp />,
+    },
     {
       path: "/signup",
       element: <SignUp />,
@@ -24,36 +32,20 @@ const router = createBrowserRouter(
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      // element: <App />,
+      element: (
+        <PrivateRoute>
+          <App />
+        </PrivateRoute>
+      ),
       children: [
-        {
-          path: "/dashboard",
-          element: <StudentList />,
-        },
-        {
-          path: "/dashboard/addStudent",
-          element: <AddStudent />,
-        },
-        {
-          path: "/dashboard/studentList",
-          element: <StudentList />,
-        },
-        {
-          path: "/dashboard/editStudent",
-          element: <UpdateStudent />,
-        },
-        {
-          path: "/dashboard/addFaculty",
-          element: <AddFaculty />,
-        },
-        {
-          path: "/dashboard/facultyList",
-          element: <FacultyList />,
-        },
-        {
-          path: "/dashboard/editFaculty",
-          element: <UpdateFaculty />,
-        },
+        { path: "/dashboard", element: <Home /> },
+        { path: "addStudent", element: <AddStudent /> },
+        { path: "studentList", element: <StudentList /> },
+        { path: "editStudent", element: <UpdateStudent /> },
+        { path: "addFaculty", element: <AddFaculty /> },
+        { path: "facultyList", element: <FacultyList /> },
+        { path: "editFaculty", element: <UpdateFaculty /> },
       ],
     },
   ],
@@ -70,11 +62,13 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider
-      router={router}
-      future={{
-        v7_startTransition: true,
-      }}
-    />
+    <AuthProvider>
+      <RouterProvider
+        router={router}
+        future={{
+          v7_startTransition: true,
+        }}
+      />
+    </AuthProvider>
   </StrictMode>
 );

@@ -21,9 +21,17 @@ const SignUpContainer = styled.div`
   color: black;
   box-shadow: 0 0 10px rgb(175 30 237 / 69%);
   // height: 300px;
-  width: 500px;
+  width: 30%;
   padding: 20px;
   border-radius: 20px;
+
+  @media (max-width: 1194px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const LoginWithOTP = ({ setLoginWithOTP }) => {
@@ -51,9 +59,9 @@ const LoginWithOTP = ({ setLoginWithOTP }) => {
 
     signInWithPhoneNumber(auth, phone, appVerifier)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         window.confirmationResult = res;
-        console.log("otp send");
+        // console.log("otp send");
         setIsOtp(true);
       })
       .catch((error) => {
@@ -74,7 +82,7 @@ const LoginWithOTP = ({ setLoginWithOTP }) => {
     window.confirmationResult
       .confirm(code)
       .then((res) => {
-        console.log("User authenticated:", res);
+        // console.log("User authenticated:", res);
         alert("Authentication successful!");
         navigate("/dashboard");
       })
